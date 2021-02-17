@@ -95,10 +95,8 @@
       
         <h3 id="subst"><a href="#subst" class="headerlink" title="subst"></a>subst</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace\test&gt; g:</span><br><span class="line"><span class="built_in">Set-Location</span> : 找不到驱动器。名为“G”的驱动器不存在。</span><br><span class="line"></span><br><span class="line"><span class="built_in">PS</span> D:\workspace\test&gt; subst /?</span><br><span class="line">将路径与驱动器号关联。</span><br><span class="line">SUBST [<span class="type">drive1</span>: [<span class="type">drive2</span>:]<span class="type">path</span>]</span><br><span class="line">SUBST drive1: /D</span><br><span class="line">  drive1:        指定要分配路径的虚拟驱动器。</span><br><span class="line">  [<span class="type">drive2</span>:]path  指定物理驱动器和要分配给虚拟驱动器的路径。</span><br><span class="line">  /D             删除被替换的</span><br><span class="line">(虚拟)驱动器。</span><br><span class="line"></span><br><span class="line">不带参数键入 SUBST，以显示当前虚拟驱动器的列表。</span><br></pre></td></tr></table></figure>
 <ul>
-<li>将D:\workspace\test 映射到G盘</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace\test&gt; subst g: .</span><br><span class="line"><span class="built_in">PS</span> D:\workspace\test&gt; g:</span><br><span class="line"><span class="built_in">PS</span> G:\&gt;</span><br></pre></td></tr></table></figure>
-<ul>
+<li><p>将D:\workspace\test 映射到G盘</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace\test&gt; subst g: .</span><br><span class="line"><span class="built_in">PS</span> D:\workspace\test&gt; g:</span><br><span class="line"><span class="built_in">PS</span> G:\&gt;</span><br></pre></td></tr></table></figure></li>
 <li><p>删除虚拟盘符G</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> G:\&gt; subst g: /d</span><br><span class="line"><span class="built_in">PS</span> G:\&gt; g:</span><br><span class="line"><span class="built_in">Set-Location</span> : 找不到驱动器。名为“G”的驱动器不存在。</span><br></pre></td></tr></table></figure>
 </li>
@@ -107,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/18/windows%E4%B8%8B%E5%B0%86%E7%9B%AE%E5%BD%95%E6%98%A0%E5%B0%84%E4%B8%BA%E8%99%9A%E6%8B%9F%E7%9B%98%E7%AC%A6/" data-id="ckl9nu5sp00009owu1afm70jt" data-title="windows下将目录映射为虚拟盘符" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/18/windows%E4%B8%8B%E5%B0%86%E7%9B%AE%E5%BD%95%E6%98%A0%E5%B0%84%E4%B8%BA%E8%99%9A%E6%8B%9F%E7%9B%98%E7%AC%A6/" data-id="ckl9ny5h60000zwwueafj29jv" data-title="windows下将目录映射为虚拟盘符" class="article-share-link">Share</a>
       
       
       
@@ -155,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/18/%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/" data-id="ckl9nu5t200039owu3pbecybb" data-title="符号链接实现文件转移" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/18/%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/" data-id="ckl9ny5hj0003zwwu7j7u2o4b" data-title="符号链接实现文件转移" class="article-share-link">Share</a>
       
       
       
