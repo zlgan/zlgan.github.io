@@ -71,6 +71,359 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vmrun使用命令行管理vmware" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/07/vmrun%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86vmware/" class="article-date">
+  <time class="dt-published" datetime="2021-03-07T08:07:16.000Z" itemprop="datePublished">2021-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/07/vmrun%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86vmware/">vmrun使用命令行管理vmware</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="查看运行中的虚拟机"><a href="#查看运行中的虚拟机" class="headerlink" title="查看运行中的虚拟机"></a>查看运行中的虚拟机</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace\myBlog&gt; vmrun list</span><br><span class="line">Total running VMs: <span class="number">1</span></span><br><span class="line">D:\Program Files (x86)\VMMachines\Windows <span class="number">10</span> x64\Windows <span class="number">10</span> x64.vmx</span><br></pre></td></tr></table></figure>
+<h3 id="关闭虚拟机"><a href="#关闭虚拟机" class="headerlink" title="关闭虚拟机"></a>关闭虚拟机</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace\myBlog&gt; vmrun stop <span class="string">&quot;D:\Program Files (x86)\VMMachines\Windows 10 x64\Windows 10 x64.vmx&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="开启虚拟机"><a href="#开启虚拟机" class="headerlink" title="开启虚拟机"></a>开启虚拟机</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS D:\workspace\myBlog&gt; vmrun -t ws start &quot;D:\Program Files (x86)\VMMachines\Windows 10 x64\Windows 10 x64.vmx&quot; nogui</span><br></pre></td></tr></table></figure>
+<p>nogui  参数指定后台运行</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/07/vmrun%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86vmware/" data-id="cklz5f4r2000d9swu44ex9plk" data-title="vmrun使用命令行管理vmware" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vmware/" rel="tag">vmware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/" rel="tag">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-powershell远程登录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/07/powershell%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2021-03-07T05:37:14.000Z" itemprop="datePublished">2021-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/07/powershell%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/">powershell远程登录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>所有命令在管理员账户下运行</p>
+<h3 id="远程计算机（192-168-86-201）"><a href="#远程计算机（192-168-86-201）" class="headerlink" title="远程计算机（192.168.86.201）"></a>远程计算机（192.168.86.201）</h3><ol>
+<li><p>开启远程管理</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Enable-PSRemote</span> <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
+<p>该服务开启了WinRM服务，监听5985（http）5986（https）端口，并且设置好了防火墙规则</p>
+</li>
+<li><p>将客户端加入信任列表</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winrm <span class="built_in">set</span> winrm/config/client <span class="string">&#x27;@&#123;trustedhosts=&quot;192.168.1.100&quot;&#125;&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>重启服务并测试</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Restart-Service</span> winrm</span><br><span class="line"><span class="built_in">Get-Service</span> winrm</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h3 id="客户端（192-168-1-100"><a href="#客户端（192-168-1-100" class="headerlink" title="客户端（192.168.1.100)"></a>客户端（192.168.1.100)</h3><ol>
+<li><p>将开启远程管理服务，同上</p>
+</li>
+<li><p>远程服务器加入信任列表，多个IP用逗号分开</p>
+</li>
+<li><p>测试服务器是否准备好接受远程连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Test-WSMan 服务器IP</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h3 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Enter-PSSession</span> <span class="literal">-ComputerName</span> <span class="number">192.168</span>.<span class="number">86.203</span> <span class="literal">-Credential</span> topdm\administrator	</span><br><span class="line"><span class="keyword">exit</span> //断开连接 </span><br></pre></td></tr></table></figure>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><ol>
+<li>如果出现连接问题，可以先关闭防火墙试试</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/07/powershell%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/" data-id="cklz5f4r000099swu3wj18lhd" data-title="powershell远程登录" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powershell-windows/" rel="tag">powershell|windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-powershell命令之-get-aduser管理域用户" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/06/powershell%E5%91%BD%E4%BB%A4%E4%B9%8B-get-aduser%E7%AE%A1%E7%90%86%E5%9F%9F%E7%94%A8%E6%88%B7/" class="article-date">
+  <time class="dt-published" datetime="2021-03-06T11:33:45.000Z" itemprop="datePublished">2021-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/06/powershell%E5%91%BD%E4%BB%A4%E4%B9%8B-get-aduser%E7%AE%A1%E7%90%86%E5%9F%9F%E7%94%A8%E6%88%B7/">powershell命令之--get-aduser管理域用户</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="查询所有域用户"><a href="#查询所有域用户" class="headerlink" title="查询所有域用户"></a>查询所有域用户</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; <span class="built_in">Get-ADUser</span> <span class="literal">-Filter</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DistinguishedName : CN=Administrator,CN=Users,DC=topdm,DC=com</span><br><span class="line">Enabled           : True</span><br><span class="line">GivenName         :</span><br><span class="line">Name              : Administrator</span><br><span class="line">ObjectClass       : user</span><br><span class="line">ObjectGUID        : <span class="number">2</span>be00a71<span class="literal">-3a3a</span><span class="literal">-44e5</span><span class="literal">-b55b</span><span class="literal">-b66edc2432ba</span></span><br><span class="line">SamAccountName    : Administrator</span><br><span class="line">SID               : S<span class="literal">-1</span><span class="literal">-5</span><span class="literal">-21</span><span class="literal">-24746217</span><span class="literal">-1637656304</span><span class="literal">-1526929586</span><span class="literal">-500</span></span><br><span class="line">Surname           :</span><br><span class="line">UserPrincipalName :</span><br><span class="line"></span><br><span class="line">DistinguishedName : CN=Guest,CN=Users,DC=topdm,DC=com</span><br><span class="line">Enabled           : False</span><br><span class="line">GivenName         :</span><br><span class="line">Name              : Guest</span><br><span class="line">ObjectClass       : user</span><br><span class="line">ObjectGUID        : <span class="number">08637438</span><span class="literal">-3cfe</span><span class="literal">-49f3</span><span class="literal">-b477</span><span class="literal">-603268aa4793</span></span><br><span class="line">SamAccountName    : Guest</span><br><span class="line">SID               : S<span class="literal">-1</span><span class="literal">-5</span><span class="literal">-21</span><span class="literal">-24746217</span><span class="literal">-1637656304</span><span class="literal">-1526929586</span><span class="literal">-501</span></span><br><span class="line">Surname           :</span><br><span class="line">UserPrincipalName :</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="查询指定域用户"><a href="#查询指定域用户" class="headerlink" title="查询指定域用户"></a>查询指定域用户</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; <span class="built_in">Get-ADUser</span> <span class="literal">-Identity</span> user1</span><br><span class="line"></span><br><span class="line">DistinguishedName : CN=user1,CN=Users,DC=topdm,DC=com</span><br><span class="line">Enabled           : True</span><br><span class="line">GivenName         :</span><br><span class="line">Name              : user1</span><br><span class="line">ObjectClass       : user</span><br><span class="line">ObjectGUID        : e6a96bd2<span class="literal">-69fc</span><span class="literal">-4687</span><span class="literal">-97ad</span><span class="literal">-dcd07cc199ad</span></span><br><span class="line">SamAccountName    : user1</span><br><span class="line">SID               : S<span class="literal">-1</span><span class="literal">-5</span><span class="literal">-21</span><span class="literal">-24746217</span><span class="literal">-1637656304</span><span class="literal">-1526929586</span><span class="literal">-1106</span></span><br><span class="line">Surname           : user1</span><br><span class="line">UserPrincipalName : user1@topdm.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/06/powershell%E5%91%BD%E4%BB%A4%E4%B9%8B-get-aduser%E7%AE%A1%E7%90%86%E5%9F%9F%E7%94%A8%E6%88%B7/" data-id="cklz5f4qx00059swu0ma3bxyp" data-title="powershell命令之--get-aduser管理域用户" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-net命令之-user管理用户" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-user%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7/" class="article-date">
+  <time class="dt-published" datetime="2021-03-06T10:13:24.000Z" itemprop="datePublished">2021-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-user%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7/">net命令之--user管理用户</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="查看账户"><a href="#查看账户" class="headerlink" title="查看账户"></a>查看账户</h3><ul>
+<li><p>本地账户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershellpowershellpowershell</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-user%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7/" data-id="cklz5f4qv00039swuha3saux2" data-title="net命令之--user管理用户" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-powershell管理windows防火墙" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/06/powershell%E7%AE%A1%E7%90%86windows%E9%98%B2%E7%81%AB%E5%A2%99/" class="article-date">
+  <time class="dt-published" datetime="2021-03-06T08:43:14.000Z" itemprop="datePublished">2021-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/06/powershell%E7%AE%A1%E7%90%86windows%E9%98%B2%E7%81%AB%E5%A2%99/">powershell管理windows防火墙</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="查看防火墙相关的命令"><a href="#查看防火墙相关的命令" class="headerlink" title="查看防火墙相关的命令"></a>查看防火墙相关的命令</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\WINDOWS\system32&gt; <span class="built_in">get-command</span> <span class="literal">-Noun</span> *firewall*</span><br><span class="line"></span><br><span class="line">CommandType     Name                                               Version    Source</span><br><span class="line">-----------     ----                                               -------    ------</span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Copy-NetFirewallRule</span>                               <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Disable-NetFirewallRule</span>                            <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Enable-NetFirewallRule</span>                             <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Get-NetFirewallAddressFilter</span>                       <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Get-NetFirewallApplicationFilter</span>                   <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Get-NetFirewallInterfaceFilter</span>                     <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Get-NetFirewallInterfaceTypeFilter</span>                 <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Get-NetFirewallPortFilter</span>                          <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Get-NetFirewallProfile</span>                             <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Get-NetFirewallRule</span>                                <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Get-NetFirewallSecurityFilter</span>                      <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Get-NetFirewallServiceFilter</span>                       <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Get-NetFirewallSetting</span>                             <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">New-NetFirewallRule</span>                                <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Remove-NetFirewallRule</span>                             <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Rename-NetFirewallRule</span>                             <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Set-NetFirewallAddressFilter</span>                       <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Set-NetFirewallApplicationFilter</span>                   <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Set-NetFirewallInterfaceFilter</span>                     <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Set-NetFirewallInterfaceTypeFilter</span>                 <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Set-NetFirewallPortFilter</span>                          <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Set-NetFirewallProfile</span>                             <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Set-NetFirewallRule</span>                                <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Set-NetFirewallSecurityFilter</span>                      <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Set-NetFirewallServiceFilter</span>                       <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Set-NetFirewallSetting</span>                             <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line"><span class="function"><span class="keyword">Function</span>        <span class="title">Show-NetFirewallRule</span>                               <span class="title">2</span>.<span class="title">0</span>.<span class="title">0</span>.<span class="title">0</span>    <span class="title">NetSecurity</span></span></span><br><span class="line">Cmdlet          <span class="built_in">Add-SqlFirewallRule</span>                                <span class="number">21.1</span>.<span class="number">18221</span> SqlServer</span><br><span class="line">Cmdlet          <span class="built_in">Add-SqlFirewallRule</span>                                <span class="number">14.0</span>       SQLPS</span><br><span class="line">Cmdlet          <span class="built_in">Remove-SqlFirewallRule</span>                             <span class="number">21.1</span>.<span class="number">18221</span> SqlServer</span><br><span class="line">Cmdlet          <span class="built_in">Remove-SqlFirewallRule</span>                             <span class="number">14.0</span>       SQLPS</span><br></pre></td></tr></table></figure>
+<h3 id="查看防火墙设置-Get-NetFirewallProfile"><a href="#查看防火墙设置-Get-NetFirewallProfile" class="headerlink" title="查看防火墙设置 Get-NetFirewallProfile"></a>查看防火墙设置 Get-NetFirewallProfile</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\WINDOWS\system32&gt;  <span class="built_in">Get-NetFirewallProfile</span></span><br><span class="line">Name                            : Domain</span><br><span class="line">Enabled                         : False</span><br><span class="line">DefaultInboundAction            : NotConfigured</span><br><span class="line">DefaultOutboundAction           : NotConfigured</span><br><span class="line">AllowInboundRules               : NotConfigured</span><br><span class="line">AllowLocalFirewallRules         : NotConfigured</span><br><span class="line">AllowLocalIPsecRules            : NotConfigured</span><br><span class="line">AllowUserApps                   : NotConfigured</span><br><span class="line">AllowUserPorts                  : NotConfigured</span><br><span class="line">AllowUnicastResponseToMulticast : NotConfigured</span><br><span class="line">NotifyOnListen                  : True</span><br><span class="line">EnableStealthModeForIPsec       : NotConfigured</span><br><span class="line">LogFileName                     : %systemroot%\system32\LogFiles\Firewall\pfirewall.log</span><br><span class="line">LogMaxSizeKilobytes             : <span class="number">4096</span></span><br><span class="line">LogAllowed                      : False</span><br><span class="line">LogBlocked                      : False</span><br><span class="line">LogIgnored                      : NotConfigured</span><br><span class="line">DisabledInterfaceAliases        : &#123;NotConfigured&#125;</span><br><span class="line"></span><br><span class="line">Name                            : Private</span><br><span class="line">Enabled                         : False</span><br><span class="line">DefaultInboundAction            : NotConfigured</span><br><span class="line">DefaultOutboundAction           : NotConfigured</span><br><span class="line">AllowInboundRules               : NotConfigured</span><br><span class="line">AllowLocalFirewallRules         : NotConfigured</span><br><span class="line">AllowLocalIPsecRules            : NotConfigured</span><br><span class="line">AllowUserApps                   : NotConfigured</span><br><span class="line">AllowUserPorts                  : NotConfigured</span><br><span class="line">AllowUnicastResponseToMulticast : NotConfigured</span><br><span class="line">NotifyOnListen                  : True</span><br><span class="line">EnableStealthModeForIPsec       : NotConfigured</span><br><span class="line">LogFileName                     : %systemroot%\system32\LogFiles\Firewall\pfirewall.log</span><br><span class="line">LogMaxSizeKilobytes             : <span class="number">4096</span></span><br><span class="line">LogAllowed                      : False</span><br><span class="line">LogBlocked                      : False</span><br><span class="line">LogIgnored                      : NotConfigured</span><br><span class="line">DisabledInterfaceAliases        : &#123;NotConfigured&#125;</span><br><span class="line"></span><br><span class="line">Name                            : Public</span><br><span class="line">Enabled                         : False</span><br><span class="line">DefaultInboundAction            : NotConfigured</span><br><span class="line">DefaultOutboundAction           : NotConfigured</span><br><span class="line">AllowInboundRules               : NotConfigured</span><br><span class="line">AllowLocalFirewallRules         : NotConfigured</span><br><span class="line">AllowLocalIPsecRules            : NotConfigured</span><br><span class="line">AllowUserApps                   : NotConfigured</span><br><span class="line">AllowUserPorts                  : NotConfigured</span><br><span class="line">AllowUnicastResponseToMulticast : NotConfigured</span><br><span class="line">NotifyOnListen                  : True</span><br><span class="line">EnableStealthModeForIPsec       : NotConfigured</span><br><span class="line">LogFileName                     : %systemroot%\system32\LogFiles\Firewall\pfirewall.log</span><br><span class="line">LogMaxSizeKilobytes             : <span class="number">4096</span></span><br><span class="line">LogAllowed                      : False</span><br><span class="line">LogBlocked                      : False</span><br><span class="line">LogIgnored                      : NotConfigured</span><br><span class="line">DisabledInterfaceAliases        : &#123;NotConfigured&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查看防火墙设置-列表Get-NetFirewallProfile-Name-domain"><a href="#查看防火墙设置-列表Get-NetFirewallProfile-Name-domain" class="headerlink" title="查看防火墙设置 列表Get-NetFirewallProfile -Name domain"></a>查看防火墙设置 列表Get-NetFirewallProfile -Name domain</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\WINDOWS\system32&gt; <span class="built_in">Get-NetFirewallProfile</span> <span class="literal">-Name</span> domain</span><br><span class="line">Name                            : Domain</span><br><span class="line">Enabled                         : True</span><br><span class="line">DefaultInboundAction            : NotConfigured</span><br><span class="line">DefaultOutboundAction           : NotConfigured</span><br><span class="line">AllowInboundRules               : NotConfigured</span><br><span class="line">AllowLocalFirewallRules         : NotConfigured</span><br><span class="line">AllowLocalIPsecRules            : NotConfigured</span><br><span class="line">AllowUserApps                   : NotConfigured</span><br><span class="line">AllowUserPorts                  : NotConfigured</span><br><span class="line">AllowUnicastResponseToMulticast : NotConfigured</span><br><span class="line">NotifyOnListen                  : True</span><br><span class="line">EnableStealthModeForIPsec       : NotConfigured</span><br><span class="line">LogFileName                     : %systemroot%\system32\LogFiles\Firewall\pfirewall.log</span><br><span class="line">LogMaxSizeKilobytes             : <span class="number">4096</span></span><br><span class="line">LogAllowed                      : False</span><br><span class="line">LogBlocked                      : False</span><br><span class="line">LogIgnored                      : NotConfigured</span><br><span class="line">DisabledInterfaceAliases        : &#123;NotConfigured&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查看某个防火墙规则"><a href="#查看某个防火墙规则" class="headerlink" title="查看某个防火墙规则"></a>查看某个防火墙规则</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\WINDOWS\system32&gt; <span class="built_in">Get-NetFirewallRule</span> <span class="literal">-DisplayName</span> icloud</span><br><span class="line">Name                  : &#123;<span class="number">3</span>A6AD2EA<span class="literal">-CE02</span><span class="literal">-4EF8</span><span class="literal">-96A0</span><span class="literal">-03CC8E91A27D</span>&#125;</span><br><span class="line">DisplayName           : iCloud</span><br><span class="line">Description           : iCloud</span><br><span class="line">DisplayGroup          : iCloud</span><br><span class="line"><span class="built_in">Group</span>                 : <span class="selector-tag">@</span>&#123;AppleInc.iCloud_12.<span class="number">2.10</span>.<span class="number">0</span>_x86__nzyj5cx40ttqa?ms<span class="literal">-resource</span>://AppleInc.iCloud/resources/iCloudAppDisplayName&#125;</span><br><span class="line">Enabled               : True</span><br><span class="line">Profile               : Domain, Private, Public</span><br><span class="line">Platform              : &#123;<span class="number">6.2</span>+&#125;</span><br><span class="line">Direction             : Outbound</span><br><span class="line">Action                : Allow</span><br><span class="line">EdgeTraversalPolicy   : Block</span><br><span class="line">LooseSourceMapping    : False</span><br><span class="line">LocalOnlyMapping      : False</span><br><span class="line">Owner                 : S<span class="literal">-1</span><span class="literal">-5</span><span class="literal">-21</span><span class="literal">-1577443161</span><span class="literal">-2385523433</span><span class="literal">-2748698458</span><span class="literal">-500</span></span><br><span class="line">PrimaryStatus         : OK</span><br><span class="line">Status                : 已从存储区成功分析规则。 (<span class="number">65536</span>)</span><br><span class="line">EnforcementStatus     : NotApplicable</span><br><span class="line">PolicyStoreSource     : PersistentStore</span><br><span class="line">PolicyStoreSourceType : Local</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="关闭防火墙-set-netfirewallprofile"><a href="#关闭防火墙-set-netfirewallprofile" class="headerlink" title="关闭防火墙 set-netfirewallprofile"></a>关闭防火墙 set-netfirewallprofile</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\WINDOWS\system32&gt; <span class="built_in">set-netfirewallprofile</span> <span class="literal">-Enabled</span> false</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/06/powershell%E7%AE%A1%E7%90%86windows%E9%98%B2%E7%81%AB%E5%A2%99/" data-id="cklz5f4qz00089swuadi8fco2" data-title="powershell管理windows防火墙" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-net命令之-use管理磁盘映射" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-use%E7%AE%A1%E7%90%86%E7%A3%81%E7%9B%98%E6%98%A0%E5%B0%84/" class="article-date">
+  <time class="dt-published" datetime="2021-03-06T07:20:56.000Z" itemprop="datePublished">2021-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-use%E7%AE%A1%E7%90%86%E7%A3%81%E7%9B%98%E6%98%A0%E5%B0%84/">net命令之--use管理磁盘映射</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="net-use-命令解释"><a href="#net-use-命令解释" class="headerlink" title="net use 命令解释"></a>net use 命令解释</h3><blockquote>
+<p>NET USE 将计算机连接到共享资源或将计算机与共享资源断开连接。使用时如果没有选项，它会列出计算机的连接</p>
+</blockquote>
+<h4 id="任务："><a href="#任务：" class="headerlink" title="任务："></a>任务：</h4><p>将远程资源映射为本地磁盘</p>
+<ol>
+<li><p>查看远程共享目录</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net view \\<span class="number">192.168</span>.<span class="number">86.203</span></span><br><span class="line">在 \\<span class="number">192.168</span>.<span class="number">86.203</span> 的共享资源</span><br><span class="line"></span><br><span class="line">共享名      类型  使用为  注释</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">testShare   Disk</span><br><span class="line">testShare2  Disk</span><br></pre></td></tr></table></figure></li>
+<li><p>使用net use映射为本地磁盘</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\WINDOWS\system32&gt; net use z: \\<span class="number">192.168</span>.<span class="number">86.203</span>\testshare &lt;password&gt; /user:<span class="number">27840</span></span><br><span class="line">命令成功完成。</span><br><span class="line"><span class="built_in">PS</span> C:\WINDOWS\system32&gt; z:</span><br><span class="line"><span class="built_in">PS</span> Z:\&gt; <span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line">目录: Z:\</span><br><span class="line">Mode                 LastWriteTime         Length Name</span><br><span class="line">----                 -------------         ------ ----</span><br><span class="line"><span class="literal">-a</span>----        <span class="number">5</span>/<span class="number">3</span>/<span class="number">2021</span>  下午 <span class="number">11</span>:<span class="number">38</span>             <span class="number">16</span> haha.txt</span><br><span class="line"><span class="literal">-a</span>----        <span class="number">5</span>/<span class="number">3</span>/<span class="number">2021</span>  下午 <span class="number">11</span>:<span class="number">05</span>             <span class="number">16</span> hello.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-use%E7%AE%A1%E7%90%86%E7%A3%81%E7%9B%98%E6%98%A0%E5%B0%84/" data-id="cklz5f4qw00049swucnaegch5" data-title="net命令之--use管理磁盘映射" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows-net%E5%91%BD%E4%BB%A4/" rel="tag">windows,net命令</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-命令行管理共享目录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/05/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2021-03-05T15:53:00.000Z" itemprop="datePublished">2021-03-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/05/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/">net命令之--Share管理共享目录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="查看共享目录"><a href="#查看共享目录" class="headerlink" title="查看共享目录"></a>查看共享目录</h3><ul>
+<li><p>查看本地共享目录 <strong>net share</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net share</span><br><span class="line">共享名       资源                            注解</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">ADMIN<span class="variable">$</span>       C:\WINDOWS                      远程管理</span><br><span class="line">C<span class="variable">$</span>           C:\                             默认共享</span><br><span class="line">D<span class="variable">$</span>           D:\                             默认共享</span><br><span class="line">E<span class="variable">$</span>           E:\                             默认共享</span><br><span class="line">F<span class="variable">$</span>           F:\                             默认共享</span><br><span class="line">IPC<span class="variable">$</span>                                         远程 IPC</span><br><span class="line">share        F:\share</span><br><span class="line">temp         D:\temp</span><br><span class="line">testc        D:\testc</span><br><span class="line">TestShare    D:\workspace                    test share of the a folder</span><br><span class="line">命令成功完成。</span><br></pre></td></tr></table></figure>
+<p>查看某个共享目录信息</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net share testshare</span><br><span class="line">共享名       TestShare</span><br><span class="line">路径         D:\workspace</span><br><span class="line">注解         test share of the a folder</span><br><span class="line">用户上限     <span class="number">25</span></span><br><span class="line">用户</span><br><span class="line">正在缓存     手动缓存文档</span><br><span class="line">权限         Everyone, READ</span><br><span class="line"></span><br><span class="line">命令成功完成。</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>查看远程共享目录 <strong>net view</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net view \\<span class="number">192.168</span>.<span class="number">86.203</span></span><br><span class="line">在 \\<span class="number">192.168</span>.<span class="number">86.203</span> 的共享资源</span><br><span class="line">共享名     类型  使用为  注释</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">testshare  Disk</span><br><span class="line">命令成功完成。</span><br><span class="line"><span class="built_in">PS</span> D:\workspace&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="创建共享目录"><a href="#创建共享目录" class="headerlink" title="创建共享目录"></a>创建共享目录</h3></li>
+<li><p>创建本地共享资源share1,权限模型everyone，完全控制</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net share share1=d:\workspace\test /grant:everyone,full</span><br><span class="line">share1 共享成功。</span><br></pre></td></tr></table></figure>
+<h3 id="取消共享"><a href="#取消共享" class="headerlink" title="取消共享"></a>取消共享</h3></li>
+<li><p>删除共享</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net share share1 /delete</span><br><span class="line">share1 已经删除。</span><br></pre></td></tr></table></figure>
+<h3 id="使用帮助"><a href="#使用帮助" class="headerlink" title="使用帮助"></a>使用帮助</h3></li>
+<li><p>查看帮助</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net help share</span><br><span class="line">此命令的语法是:</span><br><span class="line">NET SHARE</span><br><span class="line">sharename</span><br><span class="line">          sharename=drive:path [/<span class="type">GRANT</span>:<span class="type">user</span>,[<span class="type">READ</span> | <span class="type">CHANGE</span> | <span class="type">FULL</span>]]</span><br><span class="line">                               [/<span class="type">USERS</span>:<span class="type">number</span> | /<span class="type">UNLIMITED</span>]</span><br><span class="line">                               [/<span class="type">REMARK</span>:<span class="string">&quot;text&quot;</span>]</span><br><span class="line">                               [/<span class="type">CACHE</span>:<span class="type">Manual</span> | <span class="type">Documents</span>| <span class="type">Programs</span> | <span class="type">BranchCache</span> | <span class="type">None</span>]</span><br><span class="line">          sharename [/<span class="type">USERS</span>:<span class="type">number</span> | /<span class="type">UNLIMITED</span>]</span><br><span class="line">                    [/<span class="type">REMARK</span>:<span class="string">&quot;text&quot;</span>]</span><br><span class="line">                    [/<span class="type">CACHE</span>:<span class="type">Manual</span> | <span class="type">Documents</span> | <span class="type">Programs</span> | <span class="type">BranchCache</span> | <span class="type">None</span>]</span><br><span class="line">          &#123;sharename | devicename | drive:path&#125; /DELETE</span><br><span class="line">          sharename \\computername /DELETE</span><br><span class="line"></span><br><span class="line">NET SHARE 使服务器的资源让网络用户可用。使用时如果没有选项，它列出有关计算机</span><br><span class="line">上所有共享资源的信息。对于每种资源，Windows 报告设备名或路径名以及与之相关的</span><br><span class="line">描述性注释。</span><br><span class="line">sharename          为共享资源的网络名称。键入具有共享名称的 NET SHARE 只显示</span><br><span class="line">                   有关该共享的信息。</span><br><span class="line">drive:path         指定共享目录的绝对路径。</span><br><span class="line">/GRANT:user,perm   利用安全描述符创建共享，安全描述符为特定用户提供要求的权</span><br><span class="line">                   限。可以多次使用该选项以为多个用户提供共享权限。</span><br><span class="line">/USERS:number      设置可以同时访问共享资源的用户的最大数量。</span><br><span class="line">/UNLIMITED         指定无限数量的用户可以同时访问共享资源</span><br><span class="line">/REMARK:<span class="string">&quot;text&quot;</span>     添加关于资源的描述性注释。将文本用引号括起来。</span><br><span class="line">devicename         为通过共享名称共享的一台或多台打印机(LPT1: 至 LPT9:)。</span><br><span class="line">/DELETE            终止共享资源。</span><br><span class="line">/CACHE:Manual      启用手动客户端缓存来自该共享的程序和文档</span><br><span class="line">/CACHE:Documents   启用自动缓存来自该共享的文档</span><br><span class="line">/CACHE:Programs    启用自动缓存来自该共享的程序和文档</span><br><span class="line">/CACHE:BranchCache 使用从此共享启用的 BranchCache</span><br><span class="line">                   手动缓存文档</span><br><span class="line">/CACHE:None        禁用缓存该共享</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/05/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/" data-id="cklz5f4rb000q9swu7xexhnsy" data-title="net命令之--Share管理共享目录" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/" rel="tag">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-windwos-terminal快捷键" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/02/20/windwos-terminal%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="article-date">
@@ -107,7 +460,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/windwos-terminal%E5%BF%AB%E6%8D%B7%E9%94%AE/" data-id="ckli43nyh0003gkwu0o1r2xr5" data-title="windwos terminal快捷键" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/20/windwos-terminal%E5%BF%AB%E6%8D%B7%E9%94%AE/" data-id="cklz5f4r4000f9swu9a6vg7w2" data-title="windwos terminal快捷键" class="article-share-link">Share</a>
       
       
       
@@ -158,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/Powershell%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" data-id="ckli43nyd0001gkwu3ik13zyv" data-title="Powershell设置环境变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/19/Powershell%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" data-id="cklz5f4qs00019swubgasc4yu" data-title="Powershell设置环境变量" class="article-share-link">Share</a>
       
       
       
@@ -247,11 +600,22 @@
 <li><p>比较运算符（可在运算符前加上 i 或者 c ，以指定是否区分大小写）<br>  -eq  等于   -ceq  区分大小写<br>  -ne  不等于<br>  -gt   大于<br>  -ge  大于等于<br>   -lt    小于<br>   -le   小于等于<br>   -contains  包含 </p>
 </li>
 </ol>
+<h3 id="计算机管理"><a href="#计算机管理" class="headerlink" title="计算机管理"></a>计算机管理</h3><ul>
+<li><p>关机 : stop-computer</p>
+</li>
+<li><p>注销当前登录用户 cmd /c logoff</p>
+</li>
+<li><p>查询已登录用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">运算符</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/Powershell%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" data-id="ckli43ny80000gkwugaxl9vm0" data-title="Powershell基础命令" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/19/Powershell%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" data-id="cklz5f4qn00009swugo2md7g2" data-title="Powershell基础命令" class="article-share-link">Share</a>
       
       
       
@@ -265,103 +629,12 @@
 
 
   
-    <article id="post-windows下将目录映射为虚拟盘符" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/02/18/windows%E4%B8%8B%E5%B0%86%E7%9B%AE%E5%BD%95%E6%98%A0%E5%B0%84%E4%B8%BA%E8%99%9A%E6%8B%9F%E7%9B%98%E7%AC%A6/" class="article-date">
-  <time class="dt-published" datetime="2021-02-17T16:27:24.000Z" itemprop="datePublished">2021-02-18</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/02/18/windows%E4%B8%8B%E5%B0%86%E7%9B%AE%E5%BD%95%E6%98%A0%E5%B0%84%E4%B8%BA%E8%99%9A%E6%8B%9F%E7%9B%98%E7%AC%A6/">windows下将目录映射为虚拟盘符</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="subst"><a href="#subst" class="headerlink" title="subst"></a>subst</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace\test&gt; g:</span><br><span class="line"><span class="built_in">Set-Location</span> : 找不到驱动器。名为“G”的驱动器不存在。</span><br><span class="line"></span><br><span class="line"><span class="built_in">PS</span> D:\workspace\test&gt; subst /?</span><br><span class="line">将路径与驱动器号关联。</span><br><span class="line">SUBST [<span class="type">drive1</span>: [<span class="type">drive2</span>:]<span class="type">path</span>]</span><br><span class="line">SUBST drive1: /D</span><br><span class="line">  drive1:        指定要分配路径的虚拟驱动器。</span><br><span class="line">  [<span class="type">drive2</span>:]path  指定物理驱动器和要分配给虚拟驱动器的路径。</span><br><span class="line">  /D             删除被替换的</span><br><span class="line">(虚拟)驱动器。</span><br><span class="line"></span><br><span class="line">不带参数键入 SUBST，以显示当前虚拟驱动器的列表。</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>将D:\workspace\test 映射到G盘</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace\test&gt; subst g: .</span><br><span class="line"><span class="built_in">PS</span> D:\workspace\test&gt; g:</span><br><span class="line"><span class="built_in">PS</span> G:\&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>删除虚拟盘符G</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> G:\&gt; subst g: /d</span><br><span class="line"><span class="built_in">PS</span> G:\&gt; g:</span><br><span class="line"><span class="built_in">Set-Location</span> : 找不到驱动器。名为“G”的驱动器不存在。</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/18/windows%E4%B8%8B%E5%B0%86%E7%9B%AE%E5%BD%95%E6%98%A0%E5%B0%84%E4%B8%BA%E8%99%9A%E6%8B%9F%E7%9B%98%E7%AC%A6/" data-id="ckli43nyi0004gkwu9thv88vd" data-title="windows下将目录映射为虚拟盘符" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/" rel="tag">windows</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-符号链接实现文件转移" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/02/18/%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/" class="article-date">
-  <time class="dt-published" datetime="2021-02-17T16:00:01.000Z" itemprop="datePublished">2021-02-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/02/18/%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/">符号链接实现文件转移</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="mklink"><a href="#mklink" class="headerlink" title="mklink"></a>mklink</h3><p>mklink 是 Windows 下用于创建符号链接的工具，存在于 Windows Vista 及以后版本的 Windows 操作系统中。<br>使用方式：<br>MKLINK [[/D] | [/H] | [/J]] 链接名称 目标<br>说明：<br>/D 创建目录符号链接而不是文件符号链接（默认为文件符号链接）<br>/H 创建硬链接而不是符号链接<br>/J 创建目录连接点<br>链接名称 指定新的符号链接名称<br>目标 指定新链接引用的路径（绝对路径或者相对路径均可）</p>
-<ul>
-<li>符号链接相当于一个指针，指向目标路径。符号链接并不占用磁盘空间。删除符号链接也不会删除目标路径的文件。</li>
-<li>符号链接属于操作系统级别的设置，对应用程序来时是透明的。</li>
-<li>注意：powershell 不支持该命令，在管理员模式下cmd中运行</li>
-</ul>
-<p>例如：icloud照片默认存储的位置：C:\Users\Administrator\Pictures\iCloud Photos\Photos，并不支持修改。如果要将照片转移到F:\iCloud 照片\2021中</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D:\workspace\myBlog\source\_posts&gt;mklink /d  <span class="string">&quot;c:\Users\Administrator\Pictures\iCloud Photos\photos&quot;</span> <span class="string">&quot;F:\iCloud 照片\2021&quot;</span></span><br><span class="line">为 c:\Users\Administrator\Pictures\iCloud Photos\photos &lt;&lt;===&gt;&gt; F:\iCloud 照片\<span class="number">2021</span> 创建的符号链接</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/18/%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/" data-id="ckli43nyi0005gkwu45hy5cbv" data-title="符号链接实现文件转移" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/" rel="tag">windows</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -374,7 +647,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/" rel="tag">powershell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windwos-terminal/" rel="tag">windwos terminal</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/" rel="tag">powershell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell-windows/" rel="tag">powershell|windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmware/" rel="tag">vmware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows-net%E5%91%BD%E4%BB%A4/" rel="tag">windows,net命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windwos-terminal/" rel="tag">windwos terminal</a></li></ul>
     </div>
   </div>
 
@@ -384,7 +657,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/powershell/" style="font-size: 20px;">powershell</a> <a href="/tags/windows/" style="font-size: 20px;">windows</a> <a href="/tags/windwos-terminal/" style="font-size: 10px;">windwos terminal</a>
+      <a href="/tags/powershell/" style="font-size: 15px;">powershell</a> <a href="/tags/powershell-windows/" style="font-size: 10px;">powershell|windows</a> <a href="/tags/vmware/" style="font-size: 10px;">vmware</a> <a href="/tags/windows/" style="font-size: 20px;">windows</a> <a href="/tags/windows-net%E5%91%BD%E4%BB%A4/" style="font-size: 10px;">windows,net命令</a> <a href="/tags/windwos-terminal/" style="font-size: 10px;">windwos terminal</a>
     </div>
   </div>
 
@@ -393,7 +666,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li></ul>
     </div>
   </div>
 
@@ -406,23 +679,23 @@
       <ul>
         
           <li>
-            <a href="/2021/02/20/windwos-terminal%E5%BF%AB%E6%8D%B7%E9%94%AE/">windwos terminal快捷键</a>
+            <a href="/2021/03/07/vmrun%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86vmware/">vmrun使用命令行管理vmware</a>
           </li>
         
           <li>
-            <a href="/2021/02/19/Powershell%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">Powershell设置环境变量</a>
+            <a href="/2021/03/07/powershell%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/">powershell远程登录</a>
           </li>
         
           <li>
-            <a href="/2021/02/19/Powershell%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">Powershell基础命令</a>
+            <a href="/2021/03/06/powershell%E5%91%BD%E4%BB%A4%E4%B9%8B-get-aduser%E7%AE%A1%E7%90%86%E5%9F%9F%E7%94%A8%E6%88%B7/">powershell命令之--get-aduser管理域用户</a>
           </li>
         
           <li>
-            <a href="/2021/02/18/windows%E4%B8%8B%E5%B0%86%E7%9B%AE%E5%BD%95%E6%98%A0%E5%B0%84%E4%B8%BA%E8%99%9A%E6%8B%9F%E7%9B%98%E7%AC%A6/">windows下将目录映射为虚拟盘符</a>
+            <a href="/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-user%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7/">net命令之--user管理用户</a>
           </li>
         
           <li>
-            <a href="/2021/02/18/%E7%AC%A6%E5%8F%B7%E9%93%BE%E6%8E%A5%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E8%BD%AC%E7%A7%BB/">符号链接实现文件转移</a>
+            <a href="/2021/03/06/powershell%E7%AE%A1%E7%90%86windows%E9%98%B2%E7%81%AB%E5%A2%99/">powershell管理windows防火墙</a>
           </li>
         
       </ul>

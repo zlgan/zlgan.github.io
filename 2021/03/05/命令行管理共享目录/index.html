@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>net命令之--Share管理共享目录 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="查看共享目录 查看本地共享目录 net share 1234567891011121314PS D:\workspace&gt; net share共享名       资源                            注解-------------------------------------------------------------------------------ADMIN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="net命令之--Share管理共享目录">
+<meta property="og:url" content="http://example.com/2021/03/05/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="查看共享目录 查看本地共享目录 net share 1234567891011121314PS D:\workspace&gt; net share共享名       资源                            注解-------------------------------------------------------------------------------ADMIN">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-05T15:53:00.000Z">
+<meta property="article:modified_time" content="2021-03-06T07:26:36.791Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="windows">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-命令行管理共享目录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/05/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2021-03-05T15:53:00.000Z" itemprop="datePublished">2021-03-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      net命令之--Share管理共享目录
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="查看共享目录"><a href="#查看共享目录" class="headerlink" title="查看共享目录"></a>查看共享目录</h3><ul>
+<li><p>查看本地共享目录 <strong>net share</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net share</span><br><span class="line">共享名       资源                            注解</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">ADMIN<span class="variable">$</span>       C:\WINDOWS                      远程管理</span><br><span class="line">C<span class="variable">$</span>           C:\                             默认共享</span><br><span class="line">D<span class="variable">$</span>           D:\                             默认共享</span><br><span class="line">E<span class="variable">$</span>           E:\                             默认共享</span><br><span class="line">F<span class="variable">$</span>           F:\                             默认共享</span><br><span class="line">IPC<span class="variable">$</span>                                         远程 IPC</span><br><span class="line">share        F:\share</span><br><span class="line">temp         D:\temp</span><br><span class="line">testc        D:\testc</span><br><span class="line">TestShare    D:\workspace                    test share of the a folder</span><br><span class="line">命令成功完成。</span><br></pre></td></tr></table></figure>
+<p>查看某个共享目录信息</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net share testshare</span><br><span class="line">共享名       TestShare</span><br><span class="line">路径         D:\workspace</span><br><span class="line">注解         test share of the a folder</span><br><span class="line">用户上限     <span class="number">25</span></span><br><span class="line">用户</span><br><span class="line">正在缓存     手动缓存文档</span><br><span class="line">权限         Everyone, READ</span><br><span class="line"></span><br><span class="line">命令成功完成。</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>查看远程共享目录 <strong>net view</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net view \\<span class="number">192.168</span>.<span class="number">86.203</span></span><br><span class="line">在 \\<span class="number">192.168</span>.<span class="number">86.203</span> 的共享资源</span><br><span class="line">共享名     类型  使用为  注释</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">testshare  Disk</span><br><span class="line">命令成功完成。</span><br><span class="line"><span class="built_in">PS</span> D:\workspace&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="创建共享目录"><a href="#创建共享目录" class="headerlink" title="创建共享目录"></a>创建共享目录</h3></li>
+<li><p>创建本地共享资源share1,权限模型everyone，完全控制</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net share share1=d:\workspace\test /grant:everyone,full</span><br><span class="line">share1 共享成功。</span><br></pre></td></tr></table></figure>
+<h3 id="取消共享"><a href="#取消共享" class="headerlink" title="取消共享"></a>取消共享</h3></li>
+<li><p>删除共享</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net share share1 /delete</span><br><span class="line">share1 已经删除。</span><br></pre></td></tr></table></figure>
+<h3 id="使用帮助"><a href="#使用帮助" class="headerlink" title="使用帮助"></a>使用帮助</h3></li>
+<li><p>查看帮助</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net help share</span><br><span class="line">此命令的语法是:</span><br><span class="line">NET SHARE</span><br><span class="line">sharename</span><br><span class="line">          sharename=drive:path [/<span class="type">GRANT</span>:<span class="type">user</span>,[<span class="type">READ</span> | <span class="type">CHANGE</span> | <span class="type">FULL</span>]]</span><br><span class="line">                               [/<span class="type">USERS</span>:<span class="type">number</span> | /<span class="type">UNLIMITED</span>]</span><br><span class="line">                               [/<span class="type">REMARK</span>:<span class="string">&quot;text&quot;</span>]</span><br><span class="line">                               [/<span class="type">CACHE</span>:<span class="type">Manual</span> | <span class="type">Documents</span>| <span class="type">Programs</span> | <span class="type">BranchCache</span> | <span class="type">None</span>]</span><br><span class="line">          sharename [/<span class="type">USERS</span>:<span class="type">number</span> | /<span class="type">UNLIMITED</span>]</span><br><span class="line">                    [/<span class="type">REMARK</span>:<span class="string">&quot;text&quot;</span>]</span><br><span class="line">                    [/<span class="type">CACHE</span>:<span class="type">Manual</span> | <span class="type">Documents</span> | <span class="type">Programs</span> | <span class="type">BranchCache</span> | <span class="type">None</span>]</span><br><span class="line">          &#123;sharename | devicename | drive:path&#125; /DELETE</span><br><span class="line">          sharename \\computername /DELETE</span><br><span class="line"></span><br><span class="line">NET SHARE 使服务器的资源让网络用户可用。使用时如果没有选项，它列出有关计算机</span><br><span class="line">上所有共享资源的信息。对于每种资源，Windows 报告设备名或路径名以及与之相关的</span><br><span class="line">描述性注释。</span><br><span class="line">sharename          为共享资源的网络名称。键入具有共享名称的 NET SHARE 只显示</span><br><span class="line">                   有关该共享的信息。</span><br><span class="line">drive:path         指定共享目录的绝对路径。</span><br><span class="line">/GRANT:user,perm   利用安全描述符创建共享，安全描述符为特定用户提供要求的权</span><br><span class="line">                   限。可以多次使用该选项以为多个用户提供共享权限。</span><br><span class="line">/USERS:number      设置可以同时访问共享资源的用户的最大数量。</span><br><span class="line">/UNLIMITED         指定无限数量的用户可以同时访问共享资源</span><br><span class="line">/REMARK:<span class="string">&quot;text&quot;</span>     添加关于资源的描述性注释。将文本用引号括起来。</span><br><span class="line">devicename         为通过共享名称共享的一台或多台打印机(LPT1: 至 LPT9:)。</span><br><span class="line">/DELETE            终止共享资源。</span><br><span class="line">/CACHE:Manual      启用手动客户端缓存来自该共享的程序和文档</span><br><span class="line">/CACHE:Documents   启用自动缓存来自该共享的文档</span><br><span class="line">/CACHE:Programs    启用自动缓存来自该共享的程序和文档</span><br><span class="line">/CACHE:BranchCache 使用从此共享启用的 BranchCache</span><br><span class="line">                   手动缓存文档</span><br><span class="line">/CACHE:None        禁用缓存该共享</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/05/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/" data-id="cklz5f4rb000q9swu7xexhnsy" data-title="net命令之--Share管理共享目录" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/" rel="tag">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-use%E7%AE%A1%E7%90%86%E7%A3%81%E7%9B%98%E6%98%A0%E5%B0%84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          net命令之--use管理磁盘映射
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/20/windwos-terminal%E5%BF%AB%E6%8D%B7%E9%94%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">windwos terminal快捷键</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell/" rel="tag">powershell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/powershell-windows/" rel="tag">powershell|windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vmware/" rel="tag">vmware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/" rel="tag">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows-net%E5%91%BD%E4%BB%A4/" rel="tag">windows,net命令</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windwos-terminal/" rel="tag">windwos terminal</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/powershell/" style="font-size: 15px;">powershell</a> <a href="/tags/powershell-windows/" style="font-size: 10px;">powershell|windows</a> <a href="/tags/vmware/" style="font-size: 10px;">vmware</a> <a href="/tags/windows/" style="font-size: 20px;">windows</a> <a href="/tags/windows-net%E5%91%BD%E4%BB%A4/" style="font-size: 10px;">windows,net命令</a> <a href="/tags/windwos-terminal/" style="font-size: 10px;">windwos terminal</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/03/07/vmrun%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86vmware/">vmrun使用命令行管理vmware</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/07/powershell%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/">powershell远程登录</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/06/powershell%E5%91%BD%E4%BB%A4%E4%B9%8B-get-aduser%E7%AE%A1%E7%90%86%E5%9F%9F%E7%94%A8%E6%88%B7/">powershell命令之--get-aduser管理域用户</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-user%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7/">net命令之--user管理用户</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/06/powershell%E7%AE%A1%E7%90%86windows%E9%98%B2%E7%81%AB%E5%A2%99/">powershell管理windows防火墙</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

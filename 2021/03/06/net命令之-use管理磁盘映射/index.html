@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Powershell设置环境变量 | Hexo</title>
+  <title>net命令之--use管理磁盘映射 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="用.net 设置path变量 例如将d:\test加入path变量  设置环境变量  1[System.Environment]::SetEnvironmentVariable(&quot;path&quot;,$env:path+&quot;;d:\test\&quot;,&quot;user&quot;)  关闭当前窗口 重新打开窗口输入命令，查看path变量是否添加成功  1$env:pat">
+  <meta name="description" content="net use 命令解释 NET USE 将计算机连接到共享资源或将计算机与共享资源断开连接。使用时如果没有选项，它会列出计算机的连接  任务：将远程资源映射为本地磁盘  查看远程共享目录 1234567PS D:\workspace&gt; net view \\192.168.86.203在 \\192.168.86.203 的共享资源共享名      类型  使用为  注释---------">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Powershell设置环境变量">
-<meta property="og:url" content="http://example.com/2021/02/19/Powershell%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/index.html">
+<meta property="og:title" content="net命令之--use管理磁盘映射">
+<meta property="og:url" content="http://example.com/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-use%E7%AE%A1%E7%90%86%E7%A3%81%E7%9B%98%E6%98%A0%E5%B0%84/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="用.net 设置path变量 例如将d:\test加入path变量  设置环境变量  1[System.Environment]::SetEnvironmentVariable(&quot;path&quot;,$env:path+&quot;;d:\test\&quot;,&quot;user&quot;)  关闭当前窗口 重新打开窗口输入命令，查看path变量是否添加成功  1$env:pat">
+<meta property="og:description" content="net use 命令解释 NET USE 将计算机连接到共享资源或将计算机与共享资源断开连接。使用时如果没有选项，它会列出计算机的连接  任务：将远程资源映射为本地磁盘  查看远程共享目录 1234567PS D:\workspace&gt; net view \\192.168.86.203在 \\192.168.86.203 的共享资源共享名      类型  使用为  注释---------">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-19T15:58:35.000Z">
-<meta property="article:modified_time" content="2021-02-19T16:10:24.120Z">
+<meta property="article:published_time" content="2021-03-06T07:20:56.000Z">
+<meta property="article:modified_time" content="2021-03-06T10:13:43.001Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="powershell">
+<meta property="article:tag" content="windows,net命令">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -74,10 +74,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-Powershell设置环境变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-net命令之-use管理磁盘映射" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/02/19/Powershell%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="article-date">
-  <time class="dt-published" datetime="2021-02-19T15:58:35.000Z" itemprop="datePublished">2021-02-19</time>
+    <a href="/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-use%E7%AE%A1%E7%90%86%E7%A3%81%E7%9B%98%E6%98%A0%E5%B0%84/" class="article-date">
+  <time class="dt-published" datetime="2021-03-06T07:20:56.000Z" itemprop="datePublished">2021-03-06</time>
 </a>
     
   </div>
@@ -88,7 +88,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Powershell设置环境变量
+      net命令之--use管理磁盘映射
     </h1>
   
 
@@ -96,26 +96,28 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><strong>用.net 设置path变量</strong></p>
-<p>例如将d:\test加入path变量</p>
+        <h3 id="net-use-命令解释"><a href="#net-use-命令解释" class="headerlink" title="net use 命令解释"></a>net use 命令解释</h3><blockquote>
+<p>NET USE 将计算机连接到共享资源或将计算机与共享资源断开连接。使用时如果没有选项，它会列出计算机的连接</p>
+</blockquote>
+<h4 id="任务："><a href="#任务：" class="headerlink" title="任务："></a>任务：</h4><p>将远程资源映射为本地磁盘</p>
 <ol>
-<li>设置环境变量</li>
+<li><p>查看远程共享目录</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\workspace&gt; net view \\<span class="number">192.168</span>.<span class="number">86.203</span></span><br><span class="line">在 \\<span class="number">192.168</span>.<span class="number">86.203</span> 的共享资源</span><br><span class="line"></span><br><span class="line">共享名      类型  使用为  注释</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">testShare   Disk</span><br><span class="line">testShare2  Disk</span><br></pre></td></tr></table></figure></li>
+<li><p>使用net use映射为本地磁盘</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\WINDOWS\system32&gt; net use z: \\<span class="number">192.168</span>.<span class="number">86.203</span>\testshare &lt;password&gt; /user:<span class="number">27840</span></span><br><span class="line">命令成功完成。</span><br><span class="line"><span class="built_in">PS</span> C:\WINDOWS\system32&gt; z:</span><br><span class="line"><span class="built_in">PS</span> Z:\&gt; <span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line">目录: Z:\</span><br><span class="line">Mode                 LastWriteTime         Length Name</span><br><span class="line">----                 -------------         ------ ----</span><br><span class="line"><span class="literal">-a</span>----        <span class="number">5</span>/<span class="number">3</span>/<span class="number">2021</span>  下午 <span class="number">11</span>:<span class="number">38</span>             <span class="number">16</span> haha.txt</span><br><span class="line"><span class="literal">-a</span>----        <span class="number">5</span>/<span class="number">3</span>/<span class="number">2021</span>  下午 <span class="number">11</span>:<span class="number">05</span>             <span class="number">16</span> hello.txt</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
 </ol>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">System.Environment</span>]::SetEnvironmentVariable(<span class="string">&quot;path&quot;</span>,<span class="variable">$env:path</span>+<span class="string">&quot;;d:\test\&quot;</span>,<span class="string">&quot;user&quot;</span>)</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>关闭当前窗口</li>
-<li>重新打开窗口输入命令，查看path变量是否添加成功</li>
-</ol>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$env:path</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/19/Powershell%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" data-id="cklz5f4qs00019swubgasc4yu" data-title="Powershell设置环境变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/06/net%E5%91%BD%E4%BB%A4%E4%B9%8B-use%E7%AE%A1%E7%90%86%E7%A3%81%E7%9B%98%E6%98%A0%E5%B0%84/" data-id="cklz5f4qw00049swucnaegch5" data-title="net命令之--use管理磁盘映射" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powershell/" rel="tag">powershell</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows-net%E5%91%BD%E4%BB%A4/" rel="tag">windows,net命令</a></li></ul>
 
     </footer>
   </div>
@@ -123,19 +125,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/02/20/windwos-terminal%E5%BF%AB%E6%8D%B7%E9%94%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/03/06/powershell%E7%AE%A1%E7%90%86windows%E9%98%B2%E7%81%AB%E5%A2%99/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          windwos terminal快捷键
+          powershell管理windows防火墙
         
       </div>
     </a>
   
   
-    <a href="/2021/02/19/Powershell%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/03/05/%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%A1%E7%90%86%E5%85%B1%E4%BA%AB%E7%9B%AE%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Powershell基础命令</div>
+      <div class="article-nav-title">net命令之--Share管理共享目录</div>
     </a>
   
 </nav>
